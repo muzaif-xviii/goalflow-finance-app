@@ -1,0 +1,183 @@
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family: 'Segoe UI', sans-serif;
+}
+
+.container{
+    display:flex;   
+    height:100vh;
+}
+
+.side-panel{
+    width:220px;
+    background-color:#0f8b8d;
+    color:white;
+    padding:25px 20px;
+    /* display:flex; */
+    /* flex-direction:column; */
+}
+
+.side-panel h2{
+    margin-bottom:30px;
+    font-weight:600;
+}
+
+.side-panel li{
+    list-style:none;
+    padding:12px 10px;
+    margin-bottom:8px;
+    border-radius:8px;
+    cursor:pointer;
+    transition:0.3s;
+}
+
+.side-panel li:hover{
+    background-color:rgba(255,255,255,0.2);
+}
+
+/* main  */
+
+.main{
+    flex:1;
+    background-color:#111827;
+    color:white;
+    padding:20px;
+    overflow-y: auto;
+} 
+
+/* Header */
+
+.header{
+    display:flex;
+    justify-content:space-between;
+    /* align-items:center; */
+    margin-bottom:20px;
+}
+
+.header input{
+    width:300px;
+    padding:10px 15px;
+    border-radius:8px;
+    border:none;
+    outline:none;
+    background:#1f2937;
+    color:white;
+}
+
+.profile{
+    background:#1f2937;
+    padding:10px 20px;
+    border-radius:20px;
+}
+
+/* section 1*/
+.status{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:15px;
+    margin-bottom:20px;
+}
+
+.item{
+    background:#1f2937;
+    border-radius:15px;
+    min-height:100px;
+    padding:25px;
+    transition:0.3s;
+}
+
+.item:hover{
+    transform:translateY(-5px);
+    background:#273549;
+}
+
+/* section 2*/    
+
+.cards{
+    display:grid;
+    grid-template-columns:2fr 1fr;
+    gap:20px;
+    margin-bottom:20px;
+}
+
+.mycards{
+    background:#1f2937;
+     border-radius:15px;
+    padding:20px;
+    min-height:200px;
+}
+
+.cards div:last-child{
+    background:#1f2937;
+    border-radius:15px;
+    padding:20px;
+    min-height:200px;
+}
+
+/* section 3  */
+
+.activities{
+    background:#1f2937;
+    border-radius:15px;
+    padding:20px;
+    margin-bottom:20px;
+    min-height:150px;
+} 
+
+/* section 4 */
+
+.transactions{
+    background:#1f2937;
+    border-radius:15px;
+    padding:20px;
+    min-height:200px;
+}  
+
+/* respponsive  */
+
+/* @media(max-width:1024px){
+    .status{
+        grid-template-columns:repeat(2,1fr);
+    }
+
+    .charts{
+        grid-template-columns:1fr;
+    }
+}
+
+@media(max-width:768px){
+    .container{
+        flex-direction:column;
+    }
+
+    .side-panel{
+        width:100%;
+        flex-direction:row;
+        justify-content:space-between;
+        align-items:center;
+    }
+
+    .side-panel ul{
+        display:flex;
+        gap:10px;
+    }
+
+    .side-panel ul li{
+        padding:8px 12px;
+        font-size:14px;
+    }
+
+    .header input{
+        width:150px;
+    }
+
+    .status{
+        grid-template-columns:1fr;
+    }
+}  */
+
+
+
+

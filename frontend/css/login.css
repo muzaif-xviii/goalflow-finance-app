@@ -1,0 +1,105 @@
+/* login css */
+
+
+
+body {
+    min-height: 100vh;
+    background: linear-gradient(135deg, #4e73df, #1cc88a);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    color: #333;
+    text-align: center;
+    padding: 20px;
+}
+
+/* heading*/
+h2 {
+    font-size: 32px;
+    color: white;
+    margin-bottom: 10px;
+    letter-spacing: 1px;
+}
+
+/* Top Text */
+body > p {
+    margin: 10px 0;
+    color: white;
+    font-size: 14px;    
+}
+
+/* Message */
+#msg {
+    max-width: 400px;
+    margin-bottom: 25px;
+    font-size: 14px;
+    line-height: 1.5;
+}
+
+#signup{
+    text-decoration: none;
+}
+
+/* Login div */
+.login {
+    background: white;
+    padding: 30px 25px;
+    border-radius: 12px;
+    width: 100%;
+    max-width: 350px;
+    /* box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2); */
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+/* Login msg */
+#login-msg {
+    font-size: 20px;
+    font-weight: 600;
+    margin-bottom: 10px;
+    color: #4e73df;
+}
+
+/* Inputs */
+.login input {
+    padding: 12px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    outline: none;
+    font-size: 14px;
+    /* transition: 0.3s; */
+}
+
+/* Input Focus Effect */
+/* .login input:focus {
+    border-color: #4e73df;
+    box-shadow: 0 0 5px rgba(78, 115, 223, 0.4);
+} */
+
+.login button {
+    padding: 12px;
+    border: none;
+    background: #4e73df;
+    color: white;
+    border-radius: 8px;
+    font-size: 15px;
+    cursor: pointer;
+    /* transition: 0.3s; */
+}
+
+/* .login button:hover {
+    background: #2e59d9;
+} */
+
+/* Responsive
+@media (max-width: 480px) {
+    .login {
+        padding: 20px;
+    }
+
+    h2 {
+        font-size: 26px;
+    }
+} */
