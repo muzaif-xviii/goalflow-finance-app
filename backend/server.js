@@ -3,6 +3,7 @@ const cors = require("cors");
 require("dotenv").config();
 
 const authRoutes = require("./routes/auth");
+const financeRoutes = require("./routes/finance");
 
 const db = require("./config/db");
 
@@ -20,6 +21,7 @@ app.use(express.json());
 app.use(limiter);
 
 app.use("/api/auth", authRoutes);
+app.use("/api/finance", financeRoutes);
 
 //route test
 app.get("/", (req, res) => {
