@@ -26,16 +26,15 @@ app.get("/", (req, res) => {
     res.send("backend is running");
 });
 
-//db connection testing
-app.get("/test-db", (req, res) => {
-    db.query("SELECT 1", (err, results) => {
-        if (err) {
-            console.error(err);
-            res.status(500).send("database connection failed");
-        } else {
-            res.send("database connected succesfully");
-        }
-    });
+
+app.get("/test-db", async (req, res) => {
+    try {
+        const [rows] = await db.query("SELECT 1");
+        res.send("database connected successfully");
+    } catch (err) {
+        console.error(err);
+        res.status(500).send("database connection failed");
+    }
 });
 
 const PORT = process.env.PORT || 5000;
