@@ -1,4 +1,4 @@
-/* login css */
+/* signup css */
 
 
 
@@ -37,12 +37,8 @@ body > p {
     line-height: 1.5;
 }
 
-/* #signup{
-    text-decoration: none;
-} */
-
-/* Login div */
-.login {
+/* signup div */
+.signup {
     background: white;
     padding: 30px 25px;
     border-radius: 12px;
@@ -54,8 +50,8 @@ body > p {
     gap: 15px;
 }
 
-/* Login msg */
-#login-msg {
+/* signup msg */
+#signup-msg {
     font-size: 20px;
     font-weight: 600;
     margin-bottom: 10px;
@@ -63,7 +59,7 @@ body > p {
 }
 
 /* Inputs */
-.login input {
+.signup input {
     padding: 12px;
     border: 1px solid #ddd;
     border-radius: 8px;
@@ -78,7 +74,7 @@ body > p {
     box-shadow: 0 0 5px rgba(78, 115, 223, 0.4);
 } */
 
-.login button {
+.signup button {
     padding: 12px;
     border: none;
     background: #4e73df;

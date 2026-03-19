@@ -1,25 +1,25 @@
-// select elements
-const loginBtn = document.getElementById("loginBtn");
+const userId = localStorage.getItem("user_id");
 
-loginBtn.addEventListener("click", async () => {
-  const email = document.getElementById("email").value;
-  const password = document.getElementById("password").value;
+//index protection
+if (!userId) {
+  window.location.href = "login.html";
+}
 
-  try {
-    const response = await fetch("http://localhost:5001/api/auth/login", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json"
-      },
-      body: JSON.stringify({ email, password })
-    });
+// check if user is logged in
+const loginLink = document.getElementById("authLink");
 
-    const data = await response.text();
+if (userId) {
+  loginLink.textContent = "Logout";
 
-    alert(data); // shows login result
+  loginLink.addEventListener("click", () => {
+    localStorage.removeItem("user_id");
+    window.location.href = "login.html";
+  });
 
-  } catch (error) {
-    console.error(error);
-    alert("Something went wrong");
-  }
-});
+} else {
+  loginLink.textContent = "Login / Signup";
+
+  loginLink.addEventListener("click", () => {
+    window.location.href = "login.html";
+  });
+}
