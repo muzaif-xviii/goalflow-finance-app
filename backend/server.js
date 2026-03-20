@@ -13,13 +13,13 @@ const app = express();
 const rateLimit = require("express-rate-limit");
 const limiter = rateLimit({
     windowMs : 15 * 60 * 1000,
-    max : 100
+    max : 120
 });
 
 app.use(cors());
 app.use(express.json());
 
-app.use(limiter);
+app.use("/api/auth", limiter);
 
 app.use("/api/auth", authRoutes);
 app.use("/api/finance", financeRoutes);
