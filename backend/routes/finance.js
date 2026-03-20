@@ -68,4 +68,20 @@ router.get("/summary/:userID", async (req, res) => {
   }
 });
 
+// get all expenses
+router.get("/expenses/:userId", async (req, res) => {
+  const { userID } = req.params;
+
+  try {
+    const [rows] = await db.query(
+      "SELECT expense_id, category, amount, date_spent FROM expenses WHERE user_id = ? ORDER BY date_spent DESC, expense_id DESC",
+      [userID]
+    );
+
+    res.json(rows);
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ message: "error fetching expenses"});
+  }
+});
 module.exports = router;
