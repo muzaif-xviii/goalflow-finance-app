@@ -133,6 +133,9 @@ document.getElementById("saveExpenseBtn")?.addEventListener("click", async () =>
         await loadSummary();
         await loadTransactions();
         await loadGoals();
+        if (typeof loadExpenseChart === "function") {
+          loadExpenseChart();
+        }
     } catch (error) {
         console.error("Expense save error:", error);
         alert("Failed to add expense");
