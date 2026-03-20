@@ -69,7 +69,7 @@ router.get("/summary/:userID", async (req, res) => {
 });
 
 // get all expenses
-router.get("/expenses/:userId", async (req, res) => {
+router.get("/expenses/:userID", async (req, res) => {
   const { userID } = req.params;
 
   try {
@@ -82,6 +82,48 @@ router.get("/expenses/:userId", async (req, res) => {
   } catch (error) {
     console.error(error);
     res.status(500).json({ message: "error fetching expenses"});
+  }
+});
+
+// GET RECENT TRANSACTIONS (income + expenses)
+router.get("/transactions/:userId", async (req, res) => {
+  const { userId } = req.params;
+
+  try {
+    const [incomeRows] = await db.query(
+      `
+      SELECT 
+        amount,
+        source AS label,
+        date_received AS date,
+        'income' AS type
+      FROM income
+      WHERE user_id = ?
+      `,
+      [userId]
+    );
+
+    const [expenseRows] = await db.query(
+      `
+      SELECT 
+        amount,
+        category AS label,
+        date_spent AS date,
+        'expense' AS type
+      FROM expenses
+      WHERE user_id = ?
+      `,
+      [userId]
+    );
+
+    const allTransactions = [...incomeRows, ...expenseRows]
+      .sort((a, b) => new Date(b.date) - new Date(a.date))
+      .slice(0, 8);
+
+    res.json(allTransactions);
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ message: "Error fetching transactions" });
   }
 });
 module.exports = router;
