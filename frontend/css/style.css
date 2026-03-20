@@ -37,8 +37,11 @@
 .side-panel li:hover{
     background-color:rgba(255,255,255,0.2);
 }
-#authLink{
+#authLink {
     text-decoration: none;
+    color: white;
+    display: block;
+    width: 100%;
 }
 
 /* main  */
@@ -224,6 +227,39 @@
     background: #38b5b7;
     color: white;
     cursor: pointer;
+}
+
+.activities {
+    max-height: 250px;
+    overflow-y: auto;
+}
+
+.expense-entry {
+    border-left: 4px solid #38b5b7;
+}
+
+.transaction-entry,
+.goal-entry {
+    background: #273549;
+    padding: 12px;
+    border-radius: 8px;
+    margin-bottom: 10px;
+}
+
+.goal-entry button {
+    margin-top: 8px;
+    padding: 8px 12px;
+    border: none;
+    border-radius: 6px;
+    background: #38b5b7;
+    color: white;
+    cursor: pointer;
+}
+
+.last-transactions,
+.transactions {
+    max-height: 250px;
+    overflow-y: auto;
 }
 
 /* respponsive  */
