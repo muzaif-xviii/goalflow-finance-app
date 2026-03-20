@@ -93,6 +93,7 @@ router.get("/transactions/:userId", async (req, res) => {
     const [incomeRows] = await db.query(
       `
       SELECT 
+        income_id AS entry_id,
         amount,
         source AS label,
         date_received AS date,
@@ -106,6 +107,7 @@ router.get("/transactions/:userId", async (req, res) => {
     const [expenseRows] = await db.query(
       `
       SELECT 
+        expense_id AS entry_id,
         amount,
         category AS label,
         date_spent AS date,
@@ -117,7 +119,11 @@ router.get("/transactions/:userId", async (req, res) => {
     );
 
     const allTransactions = [...incomeRows, ...expenseRows]
-      .sort((a, b) => new Date(b.date) - new Date(a.date))
+      .sort((a, b) => {
+        const dateDiff = new Date(b.date) - new Date(a.date);
+        if (dateDiff !== 0) return dateDiff;
+        return b.entry_id - a.entry_id;
+      })
       .slice(0, 8);
 
     res.json(allTransactions);
@@ -126,4 +132,28 @@ router.get("/transactions/:userId", async (req, res) => {
     res.status(500).json({ message: "Error fetching transactions" });
   }
 });
+
+// GET EXPENSES GROUPED BY CATEGORY
+router.get("/expense-chart/:userId", async (req, res) => {
+  const { userId } = req.params;
+
+  try {
+    const [rows] = await db.query(
+      `
+      SELECT category, SUM(amount) AS total
+      FROM expenses
+      WHERE user_id = ?
+      GROUP BY category
+      ORDER BY total DESC
+      `,
+      [userId]
+    );
+
+    res.json(rows);
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ message: "Error fetching chart data" });
+  }
+});
+
 module.exports = router;
