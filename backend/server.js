@@ -4,6 +4,7 @@ require("dotenv").config();
 
 const authRoutes = require("./routes/auth");
 const financeRoutes = require("./routes/finance");
+const goalRoutes = require("./routes/goals");
 
 const db = require("./config/db");
 
@@ -22,6 +23,7 @@ app.use(limiter);
 
 app.use("/api/auth", authRoutes);
 app.use("/api/finance", financeRoutes);
+app.use("/api/goals", goalRoutes);
 
 //route test
 app.get("/", (req, res) => {

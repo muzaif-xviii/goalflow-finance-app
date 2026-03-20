@@ -49,3 +49,6 @@ CREATE TABLE goal_transactions (
     FOREIGN KEY (goal_id) REFERENCES goals(goal_id) ON DELETE CASCADE,
     FOREIGN KEY (user_id) REFERENCES users(user_id) ON DELETE CASCADE
 );
+
+ALTER TABLE income
+ADD COLUMN source VARCHAR(225) NOT NULL AFTER amount;
