@@ -38,4 +38,34 @@ router.post("/income", async (req, res) => {
   }
 });
 
+// dashboard calculations
+router.get("/summary/:userID", async (req, res) => {
+  const { userID } = req.params;
+
+  try {
+    const [incomeRows] = await db.query(
+      "SELECT COALESCE(SUM(amount), 0) AS total_income FROM income WHERE user_id = ?",
+      [userID] 
+    );
+
+    const [expenseRows] = await db.query(
+      "SELECT COALESCE(SUM(amount), 0) AS total_expense FROM expenses WHERE user_id = ?",
+      [userID]
+    );
+
+    const total_income = Number(incomeRows[0].total_income);
+    const total_expense = Number(expenseRows[0].total_expense);
+    const balance = total_income - total_expense;
+
+    res.json({
+      total_income,
+      total_expense,
+      balance
+    });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ message: "error fetching summary"});
+  }
+});
+
 module.exports = router;
