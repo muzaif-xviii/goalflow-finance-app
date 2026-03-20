@@ -139,9 +139,96 @@
     min-height:200px;
 }  
 
+.item h3 {
+    margin-bottom: 10px;
+}
+
+.item p {
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.action-card {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.action-card button {
+    padding: 10px;
+    border: none;
+    border-radius: 8px;
+    background: #38b5b7;
+    color: white;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.action-card button:hover {
+    background: #2fa3a5;
+}
+
+.last-transactions {
+    background: #1f2937;
+    border-radius: 15px;
+    padding: 20px;
+    min-height: 200px;
+}
+
+#expenseList,
+#goalList,
+#transactionList {
+    margin-top: 15px;
+}
+
+.expense-entry,
+.goal-entry,
+.transaction-entry {
+    background: #273549;
+    padding: 12px;
+    border-radius: 8px;
+    margin-bottom: 10px;
+}
+
+.modal {
+    display: none;
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.6);
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-content {
+    background: #1f2937;
+    color: white;
+    padding: 20px;
+    border-radius: 12px;
+    width: 320px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.modal-content input {
+    padding: 10px;
+    border: none;
+    border-radius: 8px;
+    outline: none;
+}
+
+.modal-content button {
+    padding: 10px;
+    border: none;
+    border-radius: 8px;
+    background: #38b5b7;
+    color: white;
+    cursor: pointer;
+}
+
 /* respponsive  */
 
-/* @media(max-width:1024px){
+@media(max-width:1024px){
     .status{
         grid-template-columns:repeat(2,1fr);
     }
@@ -180,7 +267,7 @@
     .status{
         grid-template-columns:1fr;
     }
-}  */
+}  
 
 
 
